@@ -1,8 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from sudachipy import Dictionary
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,   # 追記により追加
+    allow_methods=["*"],      # 追記により追加
+    allow_headers=["*"]       # 追記により追加
+)
 
 # SudachiのTokenizerを初期化
 tokenizer = Dictionary().create()
