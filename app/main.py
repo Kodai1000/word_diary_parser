@@ -10,6 +10,9 @@ tokenizer = Dictionary().create()
 class TextRequest(BaseModel):
     text: str
 
+@app.get("/")
+def root():
+    return {"message" : "Hello World"}
 
 @app.post("/analyze")
 def analyze(request: TextRequest):
